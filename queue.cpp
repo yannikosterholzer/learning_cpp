@@ -26,10 +26,12 @@ public:
 Queue::Queue() : front_ptr(nullptr), rear_ptr(nullptr){
 	Q_size = 0;
 }
+
 Queue::~Queue() {
 	while (Q_size > 0)
 		dequeue();
 }
+
 void Queue::enqueue(int new_el) {
 	QNode* newNode = new QNode;
 	newNode->element = new_el;
@@ -41,6 +43,7 @@ void Queue::enqueue(int new_el) {
 	rear_ptr = newNode;	
 	Q_size++;
 }
+
 void Queue::dequeue(void) {
 	if (Q_size >= 1) {
 		QNode* cur_front = front_ptr;
@@ -52,16 +55,18 @@ void Queue::dequeue(void) {
 		rear_ptr  = nullptr;
 		front_ptr = nullptr;
 	}
-	
 }
+
 int Queue::front() const {
 	if(Q_size != 0)
 		return front_ptr->element;
 	return -1;
 }
+
 int Queue::size() const {
 	return Q_size;
 }
+
 bool Queue::empty() const {
 	return (Q_size == 0);
 }
